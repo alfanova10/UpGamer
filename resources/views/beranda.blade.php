@@ -1,0 +1,214 @@
+@extends('layouts.app')
+
+@section('title', 'Beranda - UpGamer')
+
+@section('content')
+    {{-- BAGIAN 1: HERO SECTION --}}
+    <section class="hero">
+        <div class="container">
+            <h2>Top Up Game Disini !!</h2>
+            <p>Isi diamond, UC, dan mata uang game lainnya dengan harga terbaik dan proses instan</p>
+        </div>
+    </section>
+
+    {{-- BAGIAN 2: GRID GAME --}}
+    <div class="game-showcase-container">
+        <div class="product-grid">
+            <!-- Game 1: Mobile Legends -->
+            <div class="product-item">
+                {{-- ▼▼▼ UBAH BAGIAN href INI ▼▼▼ --}}
+                <a href="{{ route('product.show', ['game_slug' => 'mobile-legends']) }}" class="product-card">
+                    <img src="{{ asset('img/ml.jpg') }}" class="product-card-img" alt="Mobile Legends">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Mobile Legends</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 2: Free Fire -->
+            <div class="product-item">
+                {{-- ▼▼▼ UBAH BAGIAN href INI ▼▼▼ --}}
+                <a href="{{ route('product.show', ['game_slug' => 'free-fire']) }}" class="product-card">
+                    <img src="{{ asset('img/ff.jpg') }}" class="product-card-img" alt="Free Fire">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Free Fire</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 3: PUBG Mobile -->
+            <div class="product-item">
+                {{-- ▼▼▼ UBAH BAGIAN href INI (sesuaikan slug jika perlu) ▼▼▼ --}}
+                <a href="{{ route('product.show', ['game_slug' => 'pubg-mobile']) }}" class="product-card">
+                    <img src="{{ asset('img/pubg.jpg') }}" class="product-card-img" alt="PUBG Mobile">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>PUBG Mobile</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 4: Genshin Impact -->
+            <div class="product-item">
+                {{-- ▼▼▼ UBAH BAGIAN href INI (sesuaikan slug jika perlu) ▼▼▼ --}}
+                <a href="{{ route('product.show', ['game_slug' => 'genshin-impact']) }}" class="product-card">
+                    <img src="{{ asset('img/gi.jpg') }}" class="product-card-img" alt="Genshin Impact">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Genshin Impact</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 5: Roblox -->
+            <div class="product-item">
+                {{-- ▼▼▼ UBAH BAGIAN href INI (sesuaikan slug jika perlu) ▼▼▼ --}}
+                <a href="{{ route('product.show', ['game_slug' => 'roblox']) }}" class="product-card">
+                    <img src="{{ asset('img/Roblox.jpg') }}" class="product-card-img" alt="Roblox">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Roblox</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 6: Wuthering Waves -->
+            <div class="product-item">
+                {{-- ▼▼▼ UBAH BAGIAN href INI (sesuaikan slug jika perlu) ▼▼▼ --}}
+                <a href="{{ route('product.show', ['game_slug' => 'wuthering-waves']) }}" class="product-card">
+                    <img src="{{ asset('img/wuwa.jpg') }}" class="product-card-img" alt="Wuthering Waves">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Wuthering Waves</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {{-- ====================================================== --}}
+    {{-- KONTEN TAMBAHAN DIMULAI DARI SINI --}}
+    {{-- ====================================================== --}}
+
+    {{-- BAGIAN 3: EVENT & PROMO --}}
+    <div class="container about-container">
+        <h2 id="event" class="page-title">Event & Promo Spesial</h2>
+        <div class="event-grid">
+            <!-- Event 1 -->
+            <div class="event-card glass-panel">
+                <div class="event-badge">HOT</div>
+                <div class="event-image">
+                    <img src="{{ asset('img/event1.jpg') }}" alt="Flash Sale Akhir Bulan">
+                </div>
+                <div class="event-content">
+                    <div class="event-date">1-31 Juli 2025</div>
+                    <h3>Flash Sale Akhir Bulan</h3>
+                    <p>Diskon hingga 30% untuk semua produk Mobile Legends dan Free Fire</p>
+                    <a href="#" class="event-btn">Lihat Detail</a>
+                </div>
+            </div>
+            <!-- Event 2 -->
+            <div class="event-card glass-panel">
+                <div class="event-badge">NEW</div>
+                <div class="event-image">
+                    <img src="{{ asset('img/event2.jpg') }}" alt="Turnamen PUBG">
+                </div>
+                <div class="event-content">
+                    <div class="event-date">15 Juli 2025</div>
+                    <h3>Turnamen PUBG Mobile</h3>
+                    <p>Daftar tim Anda dan menangkan hadiah total Rp 10.000.000</p>
+                    <a href="#" class="event-btn">Daftar Sekarang</a>
+                </div>
+            </div>
+            <!-- Event 3 -->
+            <div class="event-card glass-panel">
+                <div class="event-badge">BEST</div>
+                <div class="event-image">
+                    <img src="{{ asset('img/event3.jpg') }}" alt="Giveaway Genshin">
+                </div>
+                <div class="event-content">
+                    <div class="event-date">1-30 Juli 2025</div>
+                    <h3>Giveaway Genshin Impact</h3>
+                    <p>Belanja minimal Rp 50.000 untuk kesempatan menangkan Genesis Crystal</p>
+                    <a href="#" class="event-btn">Ikuti Event</a>
+                </div>
+            </div>
+        </div>
+        <div class="event-archive glass-panel">
+            <h3>Event Terdahulu</h3>
+            <ul class="archive-list">
+                <li><span class="archive-date">Juni 2025</span><span class="archive-title">Summer Sale - Diskon 25%</span></li>
+                <li><span class="archive-date">Mei 2025</span><span class="archive-title">Turnamen Mobile Legends 5v5</span></li>
+            </ul>
+        </div>
+    </div>
+
+    {{-- BAGIAN 4: TENTANG KAMI --}}
+    <div class="container about-container">
+        <h2 id="tentang-kami" class="page-title">Tentang UpGamer</h2>
+        <div class="about-section glass-panel">
+            <h3>Visi Kami</h3>
+            <p>UpGamer hadir sebagai solusi top up game terpercaya dengan komitmen memberikan pengalaman transaksi yang aman, mudah, dan menguntungkan bagi para gamer.</p>
+        </div>
+        <div class="about-section glass-panel">
+            <h3>Tim Pengembang</h3>
+            <p>Dikembangkan oleh mahasiswa Universitas Indraprasta PGRI sebagai proyek mata kuliah Pemrograman Web.</p>
+            <ul class="team-list">
+                <li><strong>Rifqi Naya</strong> - Frontend Dev</li>
+                <li><strong>Pradika</strong>  - Frontend Dev</li>
+                <li><strong>Fajar</strong> - Backend Dev</li>
+                <li><strong>Rizki Azhar</strong> - UI/UX Designer</li>
+                <li><strong>Rifky Ardian</strong> - FullStack Dev & UI/UX Designer</li>
+            </ul>
+        </div>
+    </div>
+
+    {{-- BAGIAN 5: BANTUAN --}}
+    <div class="container about-container">
+        <h2 id="bantuan" class="page-title">Panduan & Bantuan</h2>
+        <div class="about-section glass-panel">
+            <h3>Langkah-Langkah Pembelian</h3>
+            <ol class="feature-list purchase-steps">
+                <li>Kunjungi halaman produk dan pilih item yang Anda inginkan.</li>
+                <li>Klik tombol <strong>"Beli Sekarang"</strong> untuk menambahkan produk ke keranjang.</li>
+                <li>Masuk atau daftar akun jika belum login.</li>
+                <li>Periksa kembali pesanan Anda di halaman keranjang.</li>
+                <li>Klik <strong>"Lanjutkan Pembayaran"</strong> dan isi detail pengiriman.</li>
+                <li>Pilih metode pembayaran yang tersedia dan lakukan transaksi.</li>
+                <li>Setelah pembayaran berhasil, Anda akan menerima konfirmasi melalui email.</li>
+            </ol>
+        </div>
+        <div class="about-section glass-panel">
+            <h3>Pertanyaan Umum</h3>
+            <div class="faq-accordion">
+                <details class="faq-item">
+                    <summary class="faq-question">Apakah saya harus punya akun untuk membeli?</summary>
+                    <div class="faq-answer">
+                        <p>Ya, Anda perlu membuat akun dan login untuk menyelesaikan pembelian. Ini memastikan semua transaksi Anda tercatat dengan aman dan memudahkan kami untuk membantu jika terjadi kendala.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Metode pembayaran apa yang tersedia?</summary>
+                    <div class="faq-answer">
+                        <p>Kami menerima berbagai metode pembayaran populer, termasuk transfer bank (BCA, Mandiri, BRI), e-wallet (GoPay, OVO, Dana), dan kartu kredit/debit (Visa, Mastercard).</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary class="faq-question">Apakah produk bisa dikembalikan?</summary>
+                    <div class="faq-answer">
+                        <p>Karena sifatnya yang digital, produk yang sudah berhasil dikirim dan diterima tidak dapat dikembalikan atau ditukar. Pengembalian dana (refund) hanya akan kami proses jika terjadi kegagalan sistem dari pihak UpGamer yang menyebabkan produk tidak terkirim.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+@endsection
