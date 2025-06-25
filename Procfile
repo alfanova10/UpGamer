@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 public/
+web: chmod -R 775 storage bootstrap/cache && vendor/bin/heroku-php-apache2 public/
