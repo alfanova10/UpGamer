@@ -343,6 +343,8 @@ body::before { content: ''; position: fixed; top: 50%; left: 50%; width: 200vw; 
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    
+    
 }
 .payment-method-tile:hover {
     border-color: var(--accent-color);
@@ -668,3 +670,403 @@ main {
     border-color: var(--primary-action-color);
     box-shadow: 0 0 15px 0px rgba(236, 72, 153, 0.5);
 }
+
+/* public/css/app.css */
+
+/* ▼▼▼ GANTI SELURUH BLOK INI DENGAN YANG BARU ▼▼▼ */
+/* ============================================== */
+/* === [FIXED] Event Horizontal Scroll          === */
+/* ============================================== */
+
+/* 1. Wrapper utama untuk menampung grid dan tombol */
+.event-scroll-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* 2. Modifikasi event-grid yang sudah ada */
+.event-grid {
+    display: flex; 
+    flex-direction: row; 
+    overflow-x: auto; 
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding: 10px 0;
+    margin: 0 -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.event-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* 3. Modifikasi event-card agar lebarnya pas */
+.event-grid .event-card {
+    flex-shrink: 0; 
+    width: 420px; 
+    display: flex;
+    flex-direction: column; /* Konten di dalam card tetap dari atas ke bawah */
+}
+
+/* 
+   ▼▼▼ PERUBAHAN UTAMA ADA DI SINI ▼▼▼ 
+   Kita mengembalikan styling untuk image dan content agar pas di dalam card
+*/
+.event-grid .event-image {
+    width: 100%; /* Lebar gambar mengikuti lebar card */
+    height: 200px; /* Beri tinggi yang pasti untuk area gambar */
+    flex-shrink: 0;
+    overflow: hidden; /* Pastikan gambar tidak keluar dari area */
+}
+.event-grid .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ini akan membuat gambar mengisi area tanpa distorsi */
+    transition: transform 0.4s ease;
+}
+.event-grid .event-card:hover .event-image img {
+    transform: scale(1.1);
+}
+.event-grid .event-content {
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Pastikan area konten mengisi sisa ruang */
+}
+/* ▲▲▲ AKHIR DARI PERUBAHAN UTAMA ▲▲▲ */
+
+
+/* 4. Styling untuk tombol navigasi scroll */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 45px;
+    height: 45px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: 300;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.scroll-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-action-color);
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.scroll-btn.left {
+    left: -15px; 
+}
+
+.scroll-btn.right {
+    right: -15px; 
+}
+
+/* Responsive untuk layar lebih kecil */
+@media (max-width: 900px) {
+    .event-grid .event-card {
+        width: 350px; 
+    }
+}
+
+@media (max-width: 500px) {
+    .scroll-btn {
+        display: none; 
+    }
+    .event-grid .event-card {
+        width: 85vw;
+    }
+}
+/* ============================================== */
+/* === [PENGGANTI] Efek Kilauan (Shine Effect) === */
+/* ============================================== */
+
+/* 1. Atur posisi relatif agar pseudo-element bisa diposisikan */
+.shine-effect {
+    position: relative;
+    overflow: hidden; /* Penting! Sembunyikan kilauan yang keluar dari kotak */
+}
+
+/* 2. Buat elemen kilauannya menggunakan ::after */
+.shine-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Mulai dari luar kotak di sebelah kiri */
+    width: 40%;   /* Lebar kilauannya */
+    height: 100%;
+    
+    /* Ini adalah gradient yang membuat efek kilauan */
+    background: linear-gradient(
+        100deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    
+    transform: skewX(-25deg); /* Miringkan kilauan agar terlihat lebih dinamis */
+    
+    /* Terapkan animasi */
+    animation: shine-animation 3s ease-in-out forwards;
+    animation-delay: 0.5s; /* Mulai animasi setelah 0.5 detik */
+}
+
+/* 3. Definisikan animasinya */
+@keyframes shine-animation {
+    100% {
+        left: 150%; /* Gerakkan kilauan ke luar kotak di sebelah kanan */
+    }
+}
+
+/* public/css/app.css */
+
+/* ▼▼▼ TAMBAHKAN BLOK CSS INI DI BAGIAN PALING BAWAH FILE ANDA ▼▼▼ */
+/* ================================================== */
+/* === [BARU] Halaman Detail Event                  === */
+/* ================================================== */
+.event-detail-card {
+    padding: 0; /* Hapus padding default dari glass-panel */
+    margin-top: 40px;
+    overflow: hidden; /* Penting agar border-radius bekerja */
+}
+
+.event-detail-header {
+    position: relative;
+    height: 350px;
+    width: 100%;
+}
+.event-detail-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+.event-detail-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(13, 12, 34, 0.8), transparent);
+}
+.event-detail-overlay h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.event-detail-body {
+    padding: 40px;
+}
+
+.event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px 30px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-color-darker);
+}
+.meta-item i {
+    width: 18px;
+    height: 18px;
+    color: var(--accent-color);
+}
+.meta-item .tag {
+    background: rgba(196, 181, 253, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.event-content-main h4.content-subtitle {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+.event-content-main ul, .event-content-main ol {
+    padding-left: 20px;
+}
+.event-content-main li {
+    margin-bottom: 10px;
+}
+
+.event-actions {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.event-btn.action-btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+}
+.back-link {
+    color: var(--text-color-darker);
+    text-decoration: underline;
+}
+.back-link:hover {
+    color: #fff;
+}
+
+/* ================================================== */
+/* === [FIXED] Bagian Ulasan Pengguna             === */
+/* ================================================== */
+.reviews-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Kolom kiri lebih besar */
+    gap: 2rem;
+}
+.review-card {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.review-author {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* --- [PERBAIKAN] Styling untuk bintang di daftar ulasan --- */
+.review-rating {
+    position: relative;
+    display: inline-block;
+    font-size: 18px; /* Sesuaikan ukuran bintang di sini */
+}
+.review-rating .stars-background,
+.review-rating .stars-filled {
+    display: flex;
+}
+.review-rating .stars-background {
+    color: var(--glass-border); /* Warna bintang yang kosong */
+}
+.review-rating .stars-filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #f59e0b; /* Warna bintang yang terisi */
+}
+/* --- Akhir dari perbaikan --- */
+
+.review-comment {
+    font-style: italic;
+    color: var(--text-color-darker);
+    line-height: 1.7;
+    flex-grow: 1; /* Agar card sama tinggi */
+    border-left: 3px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+.review-form-wrapper {
+    padding: 30px;
+    position: sticky; /* Agar form tetap terlihat saat scroll */
+    top: 100px;
+}
+.review-form-wrapper h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+.review-form-wrapper p {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+.review-form .form-group {
+    margin-bottom: 20px;
+}
+.review-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.review-form input[type="text"],
+.review-form textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(13, 12, 34, 0.8);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+}
+.review-form textarea {
+    resize: vertical;
+}
+
+/* Styling untuk input rating bintang di FORM */
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse; /* Balik urutan agar CSS-nya mudah */
+    justify-content: flex-end;
+}
+.rating-input input[type="radio"] {
+    display: none;
+}
+.rating-input label {
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'%3E%3C/polygon%3E%3C/svg%3E");
+    background-size: cover;
+    transition: all 0.2s ease;
+}
+.rating-input input[type="radio"]:checked ~ label,
+.rating-input label:hover,
+.rating-input label:hover ~ label {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23f59e0b' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'%3E%3C/polygon%3E%3C/svg%3E");
+}
+
+/* Styling untuk pesan sukses */
+.alert-success {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #a7f3d0;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .reviews-section {
+        grid-template-columns: 1fr;
+    }
+    .review-form-wrapper {
+        position: static; /* Hapus sticky di layar kecil */
+    }
+}
+
+/* ▲▲▲ AKHIR DARI BLOK CSS YANG BARU ▲▲▲ */

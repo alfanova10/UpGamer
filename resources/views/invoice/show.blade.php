@@ -5,7 +5,7 @@
 @section('content')
 <div class="invoice-page-container container">
     
-    <div class="invoice-box glass-panel">
+    <div class="invoice-box glass-panel shine-effect">
         
         <div class="invoice-header">
             <div class="icon-success">

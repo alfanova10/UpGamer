@@ -16,6 +16,8 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\InvoiceController;
 
+use App\Http\Controllers\ReviewController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes (REVISI FINAL)
@@ -27,8 +29,8 @@ Route::get('/', [HomeController::class, 'index'])->name('beranda');
 Route::get('/tentang', [AboutController::class, 'index'])->name('tentang');
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/bantuan', [HelpController::class, 'index'])->name('bantuan');
-
-
+Route::get('/event/{slug}', [EventController::class, 'show'])->name('event.show');
+Route::post('/reviews', [ReviewController::class, 'store'])->name('review.store');
 // --- Alur Pemesanan (Transaction Flow) ---
 
 // Langkah 1: Pengguna melihat halaman detail produk.

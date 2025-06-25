@@ -101,8 +101,12 @@
 
     {{-- BAGIAN 3: EVENT & PROMO --}}
     <div class="container about-container">
-        <h2 id="event" class="page-title">Event & Promo Spesial</h2>
-        <div class="event-grid">
+    <h2 id="event" class="page-title">Event & Promo Spesial</h2>
+
+    {{-- ▼▼▼ INI BAGIAN BARU UNTUK MEMBUNGKUS SCROLL ▼▼▼ --}}
+    <div class="event-scroll-wrapper">
+        <div class="event-grid" id="eventGridContainer">
+
             <!-- Event 1 -->
             <div class="event-card glass-panel">
                 <div class="event-badge">HOT</div>
@@ -113,7 +117,7 @@
                     <div class="event-date">1-31 Juli 2025</div>
                     <h3>Flash Sale Akhir Bulan</h3>
                     <p>Diskon hingga 30% untuk semua produk Mobile Legends dan Free Fire</p>
-                    <a href="#" class="event-btn">Lihat Detail</a>
+                    <a href="{{ route('event.show', ['slug' => 'weekly-warriors-sale']) }}" class="event-btn">Sikat Sekarang</a>
                 </div>
             </div>
             <!-- Event 2 -->
@@ -142,7 +146,13 @@
                     <a href="#" class="event-btn">Ikuti Event</a>
                 </div>
             </div>
+            {{-- Tambahkan event card lain di sini jika ada --}}
+
         </div>
+        {{-- ▼▼▼ Tombol Navigasi Scroll ▼▼▼ --}}
+        <button id="scrollLeftBtn" class="scroll-btn left" aria-label="Scroll Left">‹</button>
+        <button id="scrollRightBtn" class="scroll-btn right" aria-label="Scroll Right">›</button>
+    </div>
         <div class="event-archive glass-panel">
             <h3>Event Terdahulu</h3>
             <ul class="archive-list">
@@ -151,6 +161,79 @@
             </ul>
         </div>
     </div>
+
+    {{-- ====================================================== --}}
+{{-- BAGIAN BARU: ULASAN PENGGUNA --}}
+{{-- ====================================================== --}}
+<div class="container about-container">
+    <h2 class="page-title">Apa Kata Mereka?</h2>
+
+    @if (session('success'))
+        <div class="alert-success glass-panel">
+            {{ session('success') }}
+        </div>
+    @endif
+    
+    <div class="reviews-section">
+        {{-- BAGIAN DAFTAR ULASAN --}}
+        <div class="reviews-grid">
+            @forelse ($reviews as $review)
+                <div class="review-card glass-panel">
+                    <div class="review-header">
+                        <div class="review-author">{{ $review->name }}</div>
+                       <div class="review-rating">
+    {{-- Kita buat 5 bintang sebagai "background" --}}
+                            <div class="stars-background">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                            {{-- Lalu kita timpa dengan bintang berwarna sesuai nilai rating --}}
+                            <div class="stars-filled" style="width: {{ $review->rating * 20 }}%;">
+                                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="review-comment">“{{ $review->comment }}”</p>
+                </div>
+            @empty
+                <p>Belum ada ulasan. Jadilah yang pertama memberikan ulasan!</p>
+            @endforelse
+        </div>
+
+        {{-- BAGIAN FORM UNTUK MENGISI ULASAN --}}
+        <div class="review-form-wrapper glass-panel">
+            <h3>Bagikan Pengalamanmu!</h3>
+            <p>Ulasan Anda sangat berarti untuk membantu kami menjadi lebih baik.</p>
+            
+            {{-- Form akan mengirim data ke route 'review.store' yang akan kita buat --}}
+            <form action="{{ route('review.store') }}" method="POST" class="review-form">
+                @csrf
+                <div class="form-group">
+                    <label for="name">Nama/Nickname</label>
+                    <input type="text" id="name" name="name" placeholder="Contoh: GamerPro123" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="rating-input">
+                        {{-- Bintang rating dibuat dari radio button --}}
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="Luar Biasa"></label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="Bagus"></label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="Cukup"></label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="Kurang"></label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="Buruk"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment">Komentar</label>
+                    <textarea id="comment" name="comment" rows="4" placeholder="Ceritakan pengalaman belanjamu di sini..." required></textarea>
+                </div>
+                
+                <button type="submit" class="event-btn">Kirim Ulasan</button>
+            </form>
+        </div>
+    </div>
+</div>
 
     {{-- BAGIAN 4: TENTANG KAMI --}}
     <div class="container about-container">
@@ -193,7 +276,7 @@
                 <details class="faq-item">
                     <summary class="faq-question">Apakah saya harus punya akun untuk membeli?</summary>
                     <div class="faq-answer">
-                        <p>Ya, Anda perlu membuat akun dan login untuk menyelesaikan pembelian. Ini memastikan semua transaksi Anda tercatat dengan aman dan memudahkan kami untuk membantu jika terjadi kendala.</p>
+                            <p>Tidak, Anda tidak perlu membuat akun dan login untuk menyelesaikan pembelian. Itu hanya optional memastikan semua transaksi Anda tercatat dengan aman dan memudahkan kami untuk membantu jika terjadi kendala.</p>    
                     </div>
                 </details>
                 <details class="faq-item">
@@ -212,3 +295,42 @@
         </div>
     </div>
 @endsection
+
+{{-- ▼▼▼ TAMBAHKAN SECTION BARU INI DI BAWAH @endsection ▼▼▼ --}}
+@push('scripts')
+<script>
+    // Pastikan script berjalan setelah semua halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Ambil elemen-elemen yang kita butuhkan
+        const scrollContainer = document.getElementById('eventGridContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+        const scrollRightBtn = document.getElementById('scrollRightBtn');
+
+        // Pastikan semua elemennya ada sebelum menjalankan script
+        if (scrollContainer && scrollLeftBtn && scrollRightBtn) {
+            
+            // Tentukan seberapa jauh scroll akan bergerak setiap kali tombol diklik
+            // Kita ambil lebar card pertama + gap
+            const card = scrollContainer.querySelector('.event-card');
+            const scrollAmount = card ? card.offsetWidth + 32 : 400; // 32 adalah gap 2rem
+
+            // Fungsi untuk scroll ke kanan
+            scrollRightBtn.addEventListener('click', function() {
+                scrollContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Fungsi untuk scroll ke kiri
+            scrollLeftBtn.addEventListener('click', function() {
+                scrollContainer.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    });
+</script>
+@endpush

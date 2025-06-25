@@ -29,7 +29,7 @@
                 <details class="faq-item">
                     <summary class="faq-question">Apakah saya harus punya akun untuk membeli?</summary>
                     <div class="faq-answer">
-                        <p>Ya, Anda perlu membuat akun dan login untuk menyelesaikan pembelian. Ini memastikan semua transaksi Anda tercatat dengan aman dan memudahkan kami untuk membantu jika terjadi kendala.</p>
+                        <p>Tidak, Anda tidak perlu membuat akun dan login untuk menyelesaikan pembelian. Itu hanya optional memastikan semua transaksi Anda tercatat dengan aman dan memudahkan kami untuk membantu jika terjadi kendala.</p>
                     </div>
                 </details>
                 

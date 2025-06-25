@@ -67,21 +67,21 @@
                     <label class="payment-option">
                         <input type="radio" name="payment_method" value="qris" {{ old('payment_method', 'qris') == 'qris' ? 'checked' : '' }}>
                         <div class="payment-method-tile">
-                            <img src="{{ asset('img/payment/qris.svg') }}" alt="QRIS">
+                            <img src="{{ asset('img/payment/qris.jpg') }}" alt="QRIS">
                             <span>QRIS</span>
                         </div>
                     </label>
                     <label class="payment-option">
                         <input type="radio" name="payment_method" value="gopay" {{ old('payment_method') == 'gopay' ? 'checked' : '' }}>
                         <div class="payment-method-tile">
-                            <img src="{{ asset('img/payment/gopay.svg') }}" alt="GoPay">
+                            <img src="{{ asset('img/payment/gopay.jpg') }}" alt="GoPay">
                             <span>GoPay</span>
                         </div>
                     </label>
                     <label class="payment-option">
                         <input type="radio" name="payment_method" value="dana" {{ old('payment_method') == 'dana' ? 'checked' : '' }}>
                         <div class="payment-method-tile">
-                            <img src="{{ asset('img/payment/dana.svg') }}" alt="Dana">
+                            <img src="{{ asset('img/payment/dana.jpg') }}" alt="Dana">
                             <span>Dana</span>
                         </div>
                     </label>

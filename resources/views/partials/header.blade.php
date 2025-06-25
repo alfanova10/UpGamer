@@ -25,8 +25,6 @@
                 </li>
             </ul>
         </nav>
-        <div class="user-actions">
-            <a href="#">Login</a>
-        </div>
+        
     </div>
 </header>
