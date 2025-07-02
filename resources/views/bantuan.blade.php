@@ -12,7 +12,7 @@
             {{-- Kita tetap menggunakan <ol> untuk struktur, animasinya akan diatur oleh CSS --}}
             <ol class="feature-list purchase-steps">
                 <li>Kunjungi halaman produk dan pilih item yang Anda inginkan.</li>
-                <li>Klik tombol <strong>"Beli Sekarang"</strong> untuk menambahkan produk ke keranjang.</li>
+                <li>Klik tombol "Beli Sekarang"</strong> untuk menambahkan produk ke keranjang.</li>
                 <li>Masuk atau daftar akun jika belum login.</li>
                 <li>Periksa kembali pesanan Anda di halaman keranjang.</li>
                 <li>Klik <strong>"Lanjutkan Pembayaran"</strong> dan isi detail pengiriman.</li>

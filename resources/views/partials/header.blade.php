@@ -8,7 +8,7 @@
         <nav>
             <ul class="main-menu">
                 <li>
-                    <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Beranda</a>
+                    <a href="{{ url('/#beranda') }}">Beranda</a>
                 </li>
                 
                 {{-- LINK EVENT DIUBAH MENJADI ANCHOR LINK --}}

@@ -4,6 +4,16 @@
    Framework: Laravel
 */
 
+
+/* ========================================================= */
+/* === [GLOBAL] Pengaturan Skala Dasar Desain            === */
+/* ========================================================= */
+html {
+    
+    font-size: 12px; 
+}
+
+
 /* === Resets & Base Styles === */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -53,7 +63,7 @@ body::before { content: ''; position: fixed; top: 50%; left: 50%; width: 200vw; 
 .hero p { font-size: clamp(1rem, 2vw, 1.2rem); max-width: 600px; margin: 0 auto; }
 
 /* === Beranda: Game Grid === */
-.game-showcase-container { width: 90%; max-width: 1200px; margin: 40px auto; position: relative; z-index: 2; }
+.game-showcase-container { width: 90%; max-width: 950px; margin: 40px auto; position: relative; z-index: 2; }
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
 .product-card { display: block; position: relative; aspect-ratio: 4 / 5; border-radius: var(--border-radius); overflow: hidden; transform: perspective(1000px); transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; border: 1px solid var(--glass-border); background-color: var(--bg-color); }
 .product-card:hover { transform: translateY(-10px) scale(1.05); box-shadow: 0 25px 40px rgba(0,0,0,0.4); }
@@ -71,9 +81,41 @@ body::before { content: ''; position: fixed; top: 50%; left: 50%; width: 200vw; 
 .about-container { padding: 60px 0; animation: fade-in-up 0.8s ease-out; }
 .about-section { padding: 30px 40px; margin-bottom: 30px; }
 
-/* Animasi untuk Langkah Pembelian */
+/* ========================================================= */
+/* === [REVISI] Langkah-Langkah Pembelian (Bantuan)      === */
+/* ========================================================= */
 @keyframes fade-slide-in { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-.purchase-steps li { opacity: 0; animation: fade-slide-in 0.5s forwards ease-out; position: relative; padding-left: 55px; margin-bottom: 25px; font-size: 1.1rem; min-height: 40px; display: flex; align-items: center; }
+
+.purchase-steps {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: feature-counter;
+    margin-top: 30px; 
+}
+
+.purchase-steps li {
+    opacity: 0;
+    animation: fade-slide-in 0.5s forwards ease-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem; /* Ukuran font bisa disesuaikan jika perlu */
+    
+    /* --- Perubahan Utama --- */
+    padding-left: 55px; /* Disesuaikan agar pas dengan nomor baru */
+    padding-bottom: 25px; /* Ditambahkan: Spasi untuk garis di bawah */
+    margin-bottom: 25px; /* Ditambahkan: Spasi antar garis */
+    border-bottom: 1px solid var(--glass-border); /* Ditambahkan: Garis pemisah */
+}
+
+/* Hapus garis dan spasi ekstra pada item terakhir */
+.purchase-steps li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Animasi delay tetap sama */
 .purchase-steps li:nth-child(1) { animation-delay: 0.2s; }
 .purchase-steps li:nth-child(2) { animation-delay: 0.4s; }
 .purchase-steps li:nth-child(3) { animation-delay: 0.6s; }
@@ -81,9 +123,31 @@ body::before { content: ''; position: fixed; top: 50%; left: 50%; width: 200vw; 
 .purchase-steps li:nth-child(5) { animation-delay: 1.0s; }
 .purchase-steps li:nth-child(6) { animation-delay: 1.2s; }
 .purchase-steps li:nth-child(7) { animation-delay: 1.4s; }
-.purchase-steps { list-style: none; padding-left: 0; counter-reset: feature-counter; }
-.purchase-steps li::before { counter-increment: feature-counter; content: counter(feature-counter); position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--primary-action-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; box-shadow: 0 0 15px rgba(236, 72, 153, 0.5); }
 
+
+.purchase-steps li::before {
+    counter-increment: feature-counter;
+    content: counter(feature-counter);
+    position: absolute;
+    left: 0;
+    top: 0; /* Ubah 'top' agar sejajar dengan teks, bukan tengah lingkaran */
+    transform: none; /* Hapus transform Y */
+    
+    /* --- Perubahan Ukuran --- */
+    width: 36px;   /* Dikecilkan dari 40px */
+    height: 36px;  /* Dikecilkan dari 40px */
+
+    /* Styling tetap sama */
+    background: var(--primary-action-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+    flex-shrink: 0; /* Pastikan lingkaran tidak ikut menyusut */
+}
 /* Styling untuk FAQ Accordion */
 .faq-accordion { display: flex; flex-direction: column; gap: 10px; }
 .faq-item { border-bottom: 1px solid var(--glass-border); }
@@ -224,8 +288,15 @@ body::before { content: ''; position: fixed; top: 50%; left: 50%; width: 200vw; 
 }
 @media (max-width: 600px) { 
     .game-showcase-container { padding: 0 1rem; } 
-    .product-grid { grid-template-columns: 1fr; gap: 2.5rem; } 
+    .product-grid { 
+        /* Mengubah dari 1 kolom menjadi 3 kolom */
+        grid-template-columns: repeat(2, 1fr);
+        
+        /* Wajib: Kurangi jarak lebih jauh lagi */
+        gap: 1rem; 
+    } 
 }
+
 @media (max-width: 576px) {
     .footer-grid { grid-template-columns: 1fr; }
 }
@@ -1070,3 +1141,136 @@ main {
 }
 
 /* ▲▲▲ AKHIR DARI BLOK CSS YANG BARU ▲▲▲ */
+
+/* ========================================================= */
+/* === [BARU] Scroll Vertikal untuk Daftar Game          === */
+/* ========================================================= */
+
+/* 1. Atur ketinggian maksimum dan aktifkan scroll */
+.product-grid {
+    /* Batasi ketinggian grid. 75vh berarti 75% dari tinggi layar.
+       Anda bisa mengubah nilai ini (misal: 70vh atau 800px) sesuai selera. */
+    max-height: 120vh; 
+    
+    /* Aktifkan scrollbar vertikal HANYA JIKA kontennya melebihi max-height */
+    overflow-y: auto; 
+    
+    /* Beri sedikit ruang di kanan agar scrollbar tidak menempel pada kartu */
+    padding-right: 15px;
+}
+
+/* 2. (Opsional tapi Sangat Direkomendasikan) Percantik tampilan scrollbar agar sesuai tema */
+/* Ini hanya berfungsi di browser berbasis WebKit (Chrome, Edge, Safari, Opera) */
+
+/* Atur lebar scrollbar */
+.product-grid::-webkit-scrollbar {
+    width:21px;
+}
+
+/* Track atau jalur scrollbar */
+.product-grid::-webkit-scrollbar-track {
+    background: rgba(13, 12, 34, 0.5); /* Warna yang sama dengan glass-panel */
+    border-radius: 10px;
+}
+
+/* Handle atau 'thumb' yang bisa digeser */
+.product-grid::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color); /* Warna ungu terang */
+    border-radius: 10px;
+    border: 2px solid rgba(13, 12, 34, 0.5); /* Border agar ada efek 'mengambang' */
+}
+
+/* Efek saat handle di-hover */
+.product-grid::-webkit-scrollbar-thumb:hover {
+    background-color: #fff; /* Jadi putih saat kursor di atasnya */
+}
+
+/* ========================================================= */
+/* === [BARU] Scroll Vertikal untuk Daftar Komentar     === */
+/* ========================================================= */
+
+/* 1. Targetkan container yang berisi semua kartu ulasan */
+.reviews-grid {
+    /* Tentukan ketinggian maksimal. 80vh berarti 80% dari tinggi layar.
+       Nilai ini bisa Anda sesuaikan (misal: 70vh atau 900px) */
+    max-height: 80vh;
+
+    /* Aktifkan scrollbar vertikal jika konten melebihi max-height */
+    overflow-y: auto;
+
+    /* Beri sedikit ruang di kanan agar scrollbar tidak menempel */
+    padding-right: 15px;
+}
+
+/* 2. (Opsional) Percantik tampilan scrollbar agar sesuai tema */
+/* Ini akan meniru gaya scrollbar dari daftar game untuk konsistensi */
+
+.reviews-grid::-webkit-scrollbar {
+    width: 10px;
+}
+
+.reviews-grid::-webkit-scrollbar-track {
+    background: rgba(13, 12, 34, 0.5); /* Warna jalur scrollbar */
+    border-radius: 10px;
+}
+
+.reviews-grid::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color); /* Warna handle scrollbar */
+    border-radius: 10px;
+    border: 2px solid rgba(13, 12, 34, 0.5);
+}
+
+.reviews-grid::-webkit-scrollbar-thumb:hover {
+    background-color: #fff;
+}
+
+/* ========================================================= */
+/* === [BARU] Styling untuk Peringatan & Timer Pembayaran === */
+/* ========================================================= */
+.payment-timer-warning {
+    padding: 20px 25px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    /* Gunakan warna oranye/kuning untuk peringatan */
+    border: 1px solid rgba(245, 158, 11, 0.4); 
+}
+
+.payment-timer-warning h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.payment-timer-warning h4 i {
+    width: 20px;
+    height: 20px;
+    color: #f59e0b; /* Warna ikon oranye */
+}
+
+/* Styling untuk angka timer */
+#payment-timer {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    font-family: 'Courier New', Courier, monospace; /* Font mono agar angka tidak 'loncat-loncat' */
+    text-shadow: 0 0 10px var(--primary-action-color);
+}
+
+/* Styling saat waktu habis */
+#payment-timer.timer-expired {
+    color: #ef4444; /* Warna merah */
+    text-shadow: 0 0 10px #ef4444;
+    font-size: 1.8rem; /* Sedikit lebih kecil agar teks "WAKTU HABIS" muat */
+    font-family: 'Inter', sans-serif; /* Kembalikan ke font normal */
+}
+
+.payment-timer-warning p {
+    font-size: 0.9rem;
+    margin: 0;
+}

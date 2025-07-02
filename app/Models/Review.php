@@ -14,7 +14,7 @@ class Review extends Model
      *
      * @var array<int, string>
      */
-    // ▼▼▼ TAMBAHKAN BLOK INI ▼▼▼
+   
     protected $fillable = [
         'name',
         'comment',

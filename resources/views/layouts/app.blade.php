@@ -4,36 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'UpGamer - Top Up Game Murah & Cepat')</title>
-    {{-- Menggunakan helper asset() untuk path yang benar --}}
+    
     @vite('resources/css/app.css')
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/feather-icons"></script> {{-- Untuk ikon-ikon cantik --}}
+    
+    {{-- Memuat library Feather Icons --}}
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-      {{-- ▼▼▼ TAMBAHKAN BLOK INI ▼▼▼ --}}
+    {{-- Hiasan Geometris --}}
     <div class="geometric-shape shape-1"></div>
     <div class="geometric-shape shape-2"></div>
     <div class="geometric-shape shape-3"></div>
-    {{-- ▲▲▲ AKHIR DARI BLOK BARU ▲▲▲ --}}
     
-    {{-- Memanggil partials/header.blade.php --}}
+    {{-- Header --}}
     @include('partials.header')
 
     <main>
-        {{-- Di sini konten spesifik setiap halaman akan ditampilkan --}}
         @yield('content')
     </main>
 
-    {{-- Memanggil partials/footer.blade.php --}}
+    {{-- Footer --}}
     @include('partials.footer')
     
+    {{-- ========================================================= --}}
+    {{-- ▼▼▼ GANTI BAGIAN SCRIPT LAMA ANDA DENGAN BLOK INI ▼▼▼ --}}
+    {{-- ========================================================= --}}
+    
     <script>
-    feather.replace();
+        // Jalankan Feather Icons untuk pertama kali, untuk ikon-ikon yang ada di layout
+        feather.replace();
     </script>
+
+    {{-- 
+        Ini adalah 'kotak surat' atau 'wadah' script. 
+        Semua kode dari @push('scripts') di halaman lain (seperti halaman invoice)
+        akan dimasukkan secara otomatis di sini.
+    --}}
+    @stack('scripts')
+    
+    {{-- ========================================================= --}}
+    {{-- ▲▲▲ AKHIR DARI BLOK YANG DIUBAH ▲▲▲                   --}}
+    {{-- ========================================================= --}}
 
 </body>
 </html>

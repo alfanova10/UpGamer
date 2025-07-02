@@ -5,9 +5,9 @@
 @section('content')
     {{-- BAGIAN 1: HERO SECTION --}}
     <section class="hero">
-        <div class="container">
-            <h2>Top Up Game Disini !!</h2>
-            <p>Isi diamond, UC, dan mata uang game lainnya dengan harga terbaik dan proses instan</p>
+        <div class="container"> <div id="beranda">
+            <h2>Top Up Game Disini</h2>
+            <p>Isi diamond, UC, dan mata uang game lainnya dengan harga terbaik dan proses instan, hanya di UpGamer kita pastikan itu bersama dan terpercaya</p>
         </div>
     </section>
 
@@ -92,6 +92,52 @@
                     </div>
                 </a>
             </div>
+
+           <!-- Game 7: Valorant -->
+            <div class="product-item">
+                {{-- Pastikan slug 'valorant' ada di database Anda --}}
+                <a href="{{ route('product.show', ['game_slug' => 'valorant']) }}" class="product-card">
+                    {{-- Pastikan gambar valorant.jpg ada di folder public/img --}}
+                    <img src="{{ asset('img/valorant.jpg') }}" class="product-card-img" alt="Valorant">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Valorant</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 8: Clash of Clans -->
+            <div class="product-item">
+                {{-- Pastikan slug 'clash-of-clans' ada di database Anda --}}
+                <a href="{{ route('product.show', ['game_slug' => 'clash-of-clans']) }}" class="product-card">
+                    {{-- Pastikan gambar coc.jpg ada di folder public/img --}}
+                    <img src="{{ asset('img/coc.jpg') }}" class="product-card-img" alt="Clash of Clans">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Clash of Clans</h3>
+                    </div>
+                </a>
+            </div>
+            <!-- Game 9: Magic Chess -->
+            <div class="product-item">
+                {{-- Pastikan slug 'magic-chess' ada di database Anda --}}
+                <a href="{{ route('product.show', ['game_slug' => 'magic-chess']) }}" class="product-card">
+                    {{-- Pastikan gambar magic-chess.jpg ada di folder public/img --}}
+                    <img src="{{ asset('img/magic-chess.jpg') }}" class="product-card-img" alt="Magic Chess">
+                    <div class="product-overlay">
+                        <span>Cek Sekarang</span>
+                    </div>
+                    <div class="product-title-panel">
+                        <h3>Magic Chess</h3>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
         </div>
     </div>
 
@@ -130,7 +176,7 @@
                     <div class="event-date">15 Juli 2025</div>
                     <h3>Turnamen PUBG Mobile</h3>
                     <p>Daftar tim Anda dan menangkan hadiah total Rp 10.000.000</p>
-                    <a href="#" class="event-btn">Daftar Sekarang</a>
+                    <a href="{{ route('event.show', ['slug' => 'turnamen-pubg-mobile']) }}" class="event-btn">Daftar Sekarang</a>
                 </div>
             </div>
             <!-- Event 3 -->
@@ -143,7 +189,7 @@
                     <div class="event-date">1-30 Juli 2025</div>
                     <h3>Giveaway Genshin Impact</h3>
                     <p>Belanja minimal Rp 50.000 untuk kesempatan menangkan Genesis Crystal</p>
-                    <a href="#" class="event-btn">Ikuti Event</a>
+                     <a href="{{ route('event.show', ['slug' => 'gebyar-juli-giveaway']) }}" class="event-btn">Ikuti Event</a>
                 </div>
             </div>
             {{-- Tambahkan event card lain di sini jika ada --}}
@@ -259,13 +305,13 @@
     <div class="container about-container">
         <h2 id="bantuan" class="page-title">Panduan & Bantuan</h2>
         <div class="about-section glass-panel">
-            <h3>Langkah-Langkah Pembelian</h3>
-            <ol class="feature-list purchase-steps">
+            <h3><strong>Langkah-Langkah Pembelian</strong></h3> 
+            <ol class="feature-list purchase-steps"> 
                 <li>Kunjungi halaman produk dan pilih item yang Anda inginkan.</li>
-                <li>Klik tombol <strong>"Beli Sekarang"</strong> untuk menambahkan produk ke keranjang.</li>
-                <li>Masuk atau daftar akun jika belum login.</li>
+                <li>Klik tombol "Beli Sekarang" untuk menambahkan produk ke keranjang.</li>
+                <li>(optional) Masuk atau daftar akun jika belum login.</li>
                 <li>Periksa kembali pesanan Anda di halaman keranjang.</li>
-                <li>Klik <strong>"Lanjutkan Pembayaran"</strong> dan isi detail pengiriman.</li>
+                <li>Klik "Lanjutkan Pembayaran"dan isi detail pengiriman.</li>
                 <li>Pilih metode pembayaran yang tersedia dan lakukan transaksi.</li>
                 <li>Setelah pembayaran berhasil, Anda akan menerima konfirmasi melalui email.</li>
             </ol>

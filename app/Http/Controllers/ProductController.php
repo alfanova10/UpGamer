@@ -49,7 +49,7 @@ class ProductController extends Controller
             ],
 
             // ===================================
-            // GAME 3: GENSHIN IMPACT (BARU)
+            // GAME 3: GENSHIN IMPACT
             // ===================================
             'genshin-impact' => [
                 'name' => 'Genshin Impact',
@@ -67,7 +67,7 @@ class ProductController extends Controller
             ],
 
             // ===================================
-            // GAME 4: ROBLOX (BARU)
+            // GAME 4: ROBLOX
             // ===================================
             'roblox' => [
                 'name' => 'Roblox',
@@ -86,7 +86,7 @@ class ProductController extends Controller
             ],
 
             // ===================================
-            // GAME 5: PUBG MOBILE (BARU)
+            // GAME 5: PUBG MOBILE
             // ===================================
             'pubg-mobile' => [
                 'name' => 'PUBG Mobile',
@@ -105,7 +105,7 @@ class ProductController extends Controller
             ],
             
             // ===================================
-            // GAME 6: WUTHERING WAVES (BARU)
+            // GAME 6: WUTHERING WAVES
             // ===================================
             'wuthering-waves' => [
                 'name' => 'Wuthering Waves',
@@ -120,6 +120,57 @@ class ProductController extends Controller
                     ['amount' => '6480 Lunite', 'price' => 'Rp 1.500.000', 'price_value' => 1500000, 'badge' => 'BEST VALUE'],
                 ]
             ],
+
+            // ===================================
+            // GAME 7: VALORANT (BARU DITAMBAHKAN)
+            // ===================================
+            'valorant' => [
+                'name' => 'Valorant',
+                'image' => 'img/valorant.jpg',
+                'description' => 'Valorant adalah game tembak-menembak taktis 5v5 berbasis karakter dari Riot Games. Keterampilan dan strategi adalah kunci utama untuk meraih kemenangan.',
+                'products' => [
+                    ['amount' => '125 Points', 'price' => 'Rp 15.000', 'price_value' => 15000, 'badge' => null],
+                    ['amount' => '420 Points', 'price' => 'Rp 48.000', 'price_value' => 48000, 'badge' => null],
+                    ['amount' => '700 Points', 'price' => 'Rp 75.000', 'price_value' => 75000, 'badge' => 'POPULER'],
+                    ['amount' => '1375 Points', 'price' => 'Rp 140.000', 'price_value' => 140000, 'badge' => null],
+                    ['amount' => '2400 Points', 'price' => 'Rp 250.000', 'price_value' => 250000, 'badge' => 'BEST VALUE'],
+                    ['amount' => '8150 Points', 'price' => 'Rp 750.000', 'price_value' => 750000, 'badge' => null],
+                ]
+            ],
+
+            // ===================================
+            // GAME 8: CLASH OF CLANS (BARU DITAMBAHKAN)
+            // ===================================
+            'clash-of-clans' => [
+                'name' => 'Clash of Clans',
+                'image' => 'img/coc.jpg',
+                'description' => 'Bangun desamu, latih pasukan epik, dan bertempurlah dalam perang klan yang masif! Clash of Clans adalah game strategi pertempuran yang ikonik dari Supercell.',
+                'products' => [
+                    ['amount' => '80 Gems', 'price' => 'Rp 15.000', 'price_value' => 15000, 'badge' => null],
+                    ['amount' => '500 Gems', 'price' => 'Rp 75.000', 'price_value' => 75000, 'badge' => 'POPULER'],
+                    ['amount' => '1200 Gems', 'price' => 'Rp 150.000', 'price_value' => 150000, 'badge' => null],
+                    ['amount' => '2500 Gems', 'price' => 'Rp 300.000', 'price_value' => 300000, 'badge' => 'BEST VALUE'],
+                    ['amount' => '6500 Gems', 'price' => 'Rp 750.000', 'price_value' => 750000, 'badge' => null],
+                    ['amount' => '14000 Gems', 'price' => 'Rp 1.500.000', 'price_value' => 1500000, 'badge' => null],
+                ]
+            ],
+
+            // ===================================
+            // GAME 9: MAGIC CHESS (BARU DITAMBAHKAN)
+            // ===================================
+            'magic-chess' => [
+                'name' => 'Magic Chess',
+                'image' => 'img/magic-chess.jpg',
+                'description' => 'Magic Chess: Bang Bang adalah mode game auto-battler strategis di dalam Mobile Legends. Beli Little Commander dan skin papan catur eksklusif untuk meningkatkan pengalaman bermainmu!',
+                'products' => [
+                    ['amount' => 'Starlight Member', 'price' => 'Rp 120.000', 'price_value' => 120000, 'badge' => 'HOT'],
+                    ['amount' => '50 Diamonds', 'price' => 'Rp 8.000', 'price_value' => 8000, 'badge' => null],
+                    ['amount' => '100 Diamonds', 'price' => 'Rp 15.000', 'price_value' => 15000, 'badge' => null],
+                    ['amount' => '250 Diamonds', 'price' => 'Rp 35.000', 'price_value' => 35000, 'badge' => 'POPULER'],
+                    ['amount' => '1000 Diamonds', 'price' => 'Rp 130.000', 'price_value' => 130000, 'badge' => 'BEST VALUE'],
+                ]
+            ],
+
         ];
 
         // Kode di bawah ini tidak perlu diubah, akan bekerja untuk semua game

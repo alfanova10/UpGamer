@@ -12,7 +12,7 @@ class HomeController extends Controller
         // Ambil ulasan terbaru
         $reviews = Review::where('is_visible', true)
                          ->latest() // Urutan dari yang terbaru
-                         ->take(4)  // 
+                         ->take(20)  // total komentr 
                          ->get();
 
         // Kirim data reviews ke view
